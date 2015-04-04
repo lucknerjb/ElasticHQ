@@ -33,6 +33,27 @@ $router->get('/logout', ['uses' => 'SessionsController@destroy']);
 // Auth pages
 $router->group(['middleware' => 'auth'], function() use ($router) {
    $router->get('/dashboard', ['uses' => 'DashboardsController@index']);
+
+   // Clusters
+   $router->get('/clusters/{clusterId}/nodes', ['uses' => 'ClustersController@index']);
+   $router->get('/clusters/{clusterId}/indices/{indiceName}', ['uses' => 'IndicesController@show']);
+   $router->resource('clusters', 'ClustersController');
+
+   // // Indices
+   // $router->get('/indices', ['uses' => 'IndicesController@index']);
+
+   // // Mappings
+   // $router->get('/mappings', ['uses' => 'MappingsController@index']);
+
+   // // REST
+   // $router->get('/rest/custom-query', ['uses' => 'RestController@custom_query']);
+   // $router->get('/rest/insights', ['uses' => 'RestController@insights']);
+
+   // // Stats
+   // $router->get('/stats', ['uses' => 'StatsController@index']);
+
+   // // Settings
+   // $router->get('/settings', ['uses' => 'SettingsController@index']);
 });
 
 

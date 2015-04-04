@@ -150,10 +150,7 @@
       <!-- START Main section-->
       <section>
          <!-- START Page content-->
-         <div class="content-wrapper">
-            <h3>Dashboard</h3>
-            @yield('content')
-         </div>
+         @yield('content')
          <!-- END Page content-->
       </section>
       <!-- END Main section-->

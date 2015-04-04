@@ -9,7 +9,7 @@
          </a>
       </div>
       <div class="panel-body">
-         {!! Form::open(['path' => '/register', 'method' => 'post']) !!}
+         {!! Form::open(['url' => '/register', 'method' => 'post']) !!}
             <div class="form-group has-feedback">
                <input class="form-control" type="text" name="account" placeholder="Account Name">
                <span class="fa fa-group form-control-feedback text-muted"></span>

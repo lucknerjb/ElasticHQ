@@ -9,7 +9,7 @@
          </a>
       </div>
       <div class="panel-body">
-         {!! Form::open(['path' => '/login', 'method' => 'post', 'class' => 'mb-lg']) !!}
+         {!! Form::open(['url' => '/login', 'method' => 'post', 'class' => 'mb-lg']) !!}
             <div class="text-right mb-sm">
                <a href="/register" class="text-muted">Need to Signup?</a>
             </div>

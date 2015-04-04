@@ -5,12 +5,14 @@ use Auth;
 use Response;
 use Agent;
 use ElasticHQ\Domain\Users\User;
+use ElasticHQ\Domain\Accounts\Account;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
 class BaseController extends Controller {
    use DispatchesCommands;
 
    protected $currentUser;
+   protected $currentAccount;
 
    public function __construct() {
       $this->beforeFilter(function() {
@@ -27,6 +29,10 @@ class BaseController extends Controller {
          View::share('apiUrl', env('APIURL'));
          View::share('user', Auth::user());
          View::share('currentUser', Auth::user());
+
+         if (Auth::check()) {
+            $this->currentAccount = Account::find(Auth::user()->account_id);
+         }
 
          // // Base Config
          // $siteConfig = [
@@ -117,6 +123,12 @@ class BaseController extends Controller {
 
    protected function respondNoContent() {
       return $this->respond(204);
+   }
+
+   protected function pr($data) {
+      echo '<pre>';
+      print_r($data);
+      die;
    }
 
 }
