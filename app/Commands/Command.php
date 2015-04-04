@@ -1,4 +1,4 @@
-<?php namespace App\Commands;
+<?php namespace ElasticHQ\Commands;
 
 abstract class Command {
 

@@ -139,12 +139,19 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'App\Providers\AppServiceProvider',
-		'App\Providers\BusServiceProvider',
-		'App\Providers\ConfigServiceProvider',
-		'App\Providers\EventServiceProvider',
-		'App\Providers\RouteServiceProvider',
+		'ElasticHQ\Providers\AppServiceProvider',
+		'ElasticHQ\Providers\BusServiceProvider',
+		'ElasticHQ\Providers\ConfigServiceProvider',
+		'ElasticHQ\Providers\EventServiceProvider',
+		'ElasticHQ\Providers\RouteServiceProvider',
 
+      // Custom
+      'Shift31\LaravelElasticsearch\ElasticsearchServiceProvider',
+      'Illuminate\Html\HtmlServiceProvider',
+      'Jenssegers\Agent\AgentServiceProvider',
+      'Barryvdh\Debugbar\ServiceProvider',
+      'Jenssegers\Raven\RavenServiceProvider',
+      'Laracasts\Flash\FlashServiceProvider',
 	],
 
 	/*
@@ -192,6 +199,14 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+      // Custom
+      'Form'      => 'Illuminate\Html\FormFacade',
+      'HTML'      => 'Illuminate\Html\HtmlFacade',
+      'Agent'     => 'Jenssegers\Agent\Facades\Agent',
+      'Debugbar'  => 'Barryvdh\Debugbar\Facade',
+      'Raven'     => 'Jenssegers\Raven\Facades\Raven',
+      'Flash'     => 'Laracasts\Flash\Flash',
 
 	],
 
