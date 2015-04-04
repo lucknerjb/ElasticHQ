@@ -1,500 +1,166 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7]> <html class="ie ie6 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="ie ie7 lt-ie9 lt-ie8"        lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="ie ie8 lt-ie9"               lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="ie ie9"                      lang="en"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-ie">
+<!--<![endif]-->
+
 <head>
-   <title>Detail Admin - Home</title>
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Meta-->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+   <meta name="description" content="">
+   <meta name="keywords" content="">
+   <meta name="author" content="">
+   <title>BeAdmin - Bootstrap Admin Theme</title>
+   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+   <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
 
-    <link rel="stylesheet" href="/assets/css/dashboard.css" type="text/css" media="screen" />
-
-    <!-- open sans font -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
-
-    <!-- lato font -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css' />
-
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,400italic">
+   <link rel="stylesheet" href="/assets/css/dashboard.css">
+   <script src="/assets/js/dashboard_top.js" type="application/javascript"></script>
 </head>
+
 <body>
-    <!-- navbar -->
-    <header class="navbar navbar-inverse" role="banner">
-        <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" id="menu-toggler">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">
-                <img src="/assets/img/dashboard/logo.png" alt="logo" />
+   <!-- START Main wrapper-->
+   <div class="wrapper">
+      <!-- START Top Navbar-->
+      <nav role="navigation" class="navbar navbar-default navbar-top navbar-fixed-top">
+         <!-- START navbar header-->
+         <div class="navbar-header">
+            <a href="index.html" class="navbar-brand">
+               <div class="brand-logo">
+                  <img src="/assets/img/dashboard/logo.png" alt="App Logo" class="img-responsive">
+               </div>
+               <div class="brand-logo-collapsed">
+                  <img src="/assets/img/dashboard/logo-single.png" alt="App Logo" class="img-responsive">
+               </div>
             </a>
-        </div>
-        <ul class="nav navbar-nav pull-right hidden-xs">
-            <li class="hidden-xs hidden-sm">
-                <input class="search" type="text" />
-            </li>
-            <li class="notification-dropdown hidden-xs hidden-sm">
-                <a href="#" class="trigger">
-                    <i class="icon-warning-sign"></i>
-                    <span class="count">8</span>
-                </a>
-                <div class="pop-dialog">
-                    <div class="pointer right">
-                        <div class="arrow"></div>
-                        <div class="arrow_border"></div>
-                    </div>
-                    <div class="body">
-                        <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
-                        <div class="notifications">
-                            <h3>You have 6 new notifications</h3>
-                            <a href="#" class="item">
-                                <i class="icon-signin"></i> New user registration
-                                <span class="time"><i class="icon-time"></i> 13 min.</span>
-                            </a>
-                            <a href="#" class="item">
-                                <i class="icon-signin"></i> New user registration
-                                <span class="time"><i class="icon-time"></i> 18 min.</span>
-                            </a>
-                            <a href="#" class="item">
-                                <i class="icon-envelope-alt"></i> New message from Alejandra
-                                <span class="time"><i class="icon-time"></i> 28 min.</span>
-                            </a>
-                            <a href="#" class="item">
-                                <i class="icon-signin"></i> New user registration
-                                <span class="time"><i class="icon-time"></i> 49 min.</span>
-                            </a>
-                            <a href="#" class="item">
-                                <i class="icon-download-alt"></i> New order placed
-                                <span class="time"><i class="icon-time"></i> 1 day.</span>
-                            </a>
-                            <div class="footer">
-                                <a href="#" class="logout">View all notifications</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="notification-dropdown hidden-xs hidden-sm">
-                <a href="#" class="trigger">
-                    <i class="icon-envelope"></i>
-                </a>
-                <div class="pop-dialog">
-                    <div class="pointer right">
-                        <div class="arrow"></div>
-                        <div class="arrow_border"></div>
-                    </div>
-                    <div class="body">
-                        <a href="#" class="close-icon"><i class="icon-remove-sign"></i></a>
-                        <div class="messages">
-                            <a href="#" class="item">
-                                <img src="/assets/img/dashboard/contact-img.png" class="display" alt="user" />
-                                <div class="name">Alejandra Galván</div>
-                                <div class="msg">
-                                    There are many variations of available, but the majority have suffered alterations.
-                                </div>
-                                <span class="time"><i class="icon-time"></i> 13 min.</span>
-                            </a>
-                            <a href="#" class="item">
-                                <img src="/assets/img/dashboard/contact-img2.png" class="display" alt="user" />
-                                <div class="name">Alejandra Galván</div>
-                                <div class="msg">
-                                    There are many variations of available, have suffered alterations.
-                                </div>
-                                <span class="time"><i class="icon-time"></i> 26 min.</span>
-                            </a>
-                            <a href="#" class="item last">
-                                <img src="/assets/img/dashboard/contact-img.png" class="display" alt="user" />
-                                <div class="name">Alejandra Galván</div>
-                                <div class="msg">
-                                    There are many variations of available, but the majority have suffered alterations.
-                                </div>
-                                <span class="time"><i class="icon-time"></i> 48 min.</span>
-                            </a>
-                            <div class="footer">
-                                <a href="#" class="logout">View all messages</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown">
-                    Your account
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="personal-info.html">Personal info</a></li>
-                    <li><a href="#">Account settings</a></li>
-                    <li><a href="#">Billing</a></li>
-                    <li><a href="#">Export your data</a></li>
-                    <li><a href="#">Send feedback</a></li>
-                </ul>
-            </li>
-            <li class="settings hidden-xs hidden-sm">
-                <a href="personal-info.html" role="button">
-                    <i class="icon-cog"></i>
-                </a>
-            </li>
-            <li class="settings hidden-xs hidden-sm">
-                <a href="signin.html" role="button">
-                    <i class="icon-share-alt"></i>
-                </a>
-            </li>
-        </ul>
-    </header>
-    <!-- end navbar -->
-
-    <!-- sidebar -->
-    <div id="sidebar-nav">
-        <ul id="dashboard-menu">
-            <li class="active">
-                <div class="pointer">
-                    <div class="arrow"></div>
-                    <div class="arrow_border"></div>
-                </div>
-                <a href="index.html">
-                    <i class="icon-home"></i>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="chart-showcase.html">
-                    <i class="icon-signal"></i>
-                    <span>Charts</span>
-                </a>
-            </li>
-            <li>
-                <a class="dropdown-toggle" href="#">
-                    <i class="icon-group"></i>
-                    <span>Users</span>
-                    <i class="icon-chevron-down"></i>
-                </a>
-                <ul class="submenu">
-                    <li><a href="user-list.html">User list</a></li>
-                    <li><a href="new-user.html">New user form</a></li>
-                    <li><a href="user-profile.html">User profile</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="dropdown-toggle" href="#">
-                    <i class="icon-edit"></i>
-                    <span>Forms</span>
-                    <i class="icon-chevron-down"></i>
-                </a>
-                <ul class="submenu">
-                    <li><a href="form-showcase.html">Form showcase</a></li>
-                    <li><a href="form-wizard.html">Form wizard</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="gallery.html">
-                    <i class="icon-picture"></i>
-                    <span>Gallery</span>
-                </a>
-            </li>
-            <li>
-                <a href="calendar.html">
-                    <i class="icon-calendar-empty"></i>
-                    <span>Calendar</span>
-                </a>
-            </li>
-            <li>
-                <a class="dropdown-toggle" href="tables.html">
-                    <i class="icon-th-large"></i>
-                    <span>Tables</span>
-                    <i class="icon-chevron-down"></i>
-                </a>
-                <ul class="submenu">
-                    <li><a href="tables.html">Custom tables</a></li>
-                    <li><a href="datatables.html">DataTables</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="dropdown-toggle ui-elements" href="#">
-                    <i class="icon-code-fork"></i>
-                    <span>UI Elements</span>
-                    <i class="icon-chevron-down"></i>
-                </a>
-                <ul class="submenu">
-                    <li><a href="ui-elements.html">UI Elements</a></li>
-                    <li><a href="icons.html">Icons</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="personal-info.html">
-                    <i class="icon-cog"></i>
-                    <span>My Info</span>
-                </a>
-            </li>
-            <li>
-                <a class="dropdown-toggle" href="#">
-                    <i class="icon-share-alt"></i>
-                    <span>Extras</span>
-                    <i class="icon-chevron-down"></i>
-                </a>
-                <ul class="submenu">
-                    <li><a href="code-editor.html">Code editor</a></li>
-                    <li><a href="grids.html">Grids</a></li>
-                    <li><a href="signin.html">Sign in</a></li>
-                    <li><a href="signup.html">Sign up</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <!-- end sidebar -->
-
-
-   <!-- main container -->
-    <div class="content">
-        <div id="pad-wrapper">
-            <!-- statistics chart built with jQuery Flot -->
-            <div class="row chart">
-                <div class="col-md-12">
-                    <h4 class="clearfix pull-left">
-                        Statistics
-                    </h4>
-                    <div class="btn-group pull-right">
-                        <button class="glow left">DAY</button>
-                        <button class="glow middle active">MONTH</button>
-                        <button class="glow right">YEAR</button>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div id="statsChart"></div>
-                </div>
+         </div>
+         <!-- END navbar header-->
+         <!-- START Nav wrapper-->
+         <div class="nav-wrapper">
+            <!-- START Left navbar-->
+            <ul class="nav navbar-nav">
+               <li>
+                  <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+                  <a href="#" data-toggle-state="aside-collapsed" class="hidden-xs">
+                     <em class="fa fa-navicon"></em>
+                  </a>
+                  <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
+                  <a href="#" data-toggle-state="aside-toggled" class="visible-xs">
+                     <em class="fa fa-navicon"></em>
+                  </a>
+               </li>
+            </ul>
+            <!-- END Left navbar-->
+         </div>
+         <!-- END Nav wrapper-->
+      </nav>
+      <!-- END Top Navbar-->
+      <!-- START aside-->
+      <aside class="aside">
+         <!-- START Sidebar (left)-->
+         <nav class="sidebar">
+            <!-- START user info-->
+            <div class="item user-block" style="display:block;">
+               <!-- User picture-->
+               <div class="user-block-picture">
+                  <div class="user-block-status">
+                     <img src="/assets/img/dashboard/user/02.jpg" alt="Avatar" width="60" height="60" class="img-thumbnail img-circle">
+                     <div class="circle circle-success circle-lg"></div>
+                  </div>
+                  <!-- Status when collapsed-->
+               </div>
+               <!-- Name and Role-->
+               <div class="user-block-info">
+                  <span class="user-block-name item-text">Welcome</span>
+                  <span class="user-block-role">{!! $currentUser->name !!}</span>
+               </div>
             </div>
-            <!-- end statistics chart -->
-
-            <!-- UI Elements section -->
-            <div class="row section ui-elements">
-                <div class="col-md-12">
-                    <h4>UI Elements</h4>
-                </div>
-                <div class="col-md-5 knobs">
-                    <div class="knob-wrapper">
-                        <input type="text" value="50" class="knob" data-thickness=".3" data-inputColor="#333" data-fgColor="#30a1ec" data-bgColor="#d4ecfd" data-width="150">
-                        <div class="info">
-                            <div class="param">
-                                <span class="line blue"></span>
-                                Active users
-                            </div>
-                        </div>
-                    </div>
-                    <div class="knob-wrapper">
-                        <input type="text" value="75" class="knob second" data-thickness=".3" data-inputColor="#333" data-fgColor="#3d88ba" data-bgColor="#d4ecfd" data-width="150">
-                        <div class="info">
-                            <div class="param">
-                                <span class="line blue"></span>
-                                % disk space usage
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 showcase">
-                    <div class="ui-sliders">
-                        <div class="slider slider-sample1 vertical-handler"></div>
-                        <div class="slider slider-sample2"></div>
-                        <div class="slider slider-sample3"></div>
-                    </div>
-                    <div class="ui-group">
-                        <a class="btn-flat inverse">Large Button</a>
-                        <a class="btn-flat gray">Large Button</a>
-                        <a class="btn-flat default">Large Button</a>
-                        <a class="btn-flat primary">Large Button</a>
-                    </div>
-
-                    <div class="ui-group">
-                        <a class="btn-flat icon">
-                            <i class="tool"></i> Icon button
+            <!-- END user info-->
+            <ul class="nav">
+               <!-- START Menu-->
+               <li class="nav-heading">Main navigation</li>
+               <li class="active">
+                  <a href="/dashboard" title="Dashboard" data-toggle="" class="no-submenu">
+                     <em class="fa fa-dot-circle-o"></em>
+                     <div class="label label-primary pull-right">10</div>
+                     <span class="item-text">Dashboard</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="#" title="REST" data-toggle="collapse-next" class="has-submenu">
+                     <em class="fa fa-flask"></em>
+                     <span class="item-text">REST</span>
+                  </a>
+                  <!-- START SubMenu item-->
+                  <ul class="nav collapse ">
+                     <li>
+                        <a href="/rest/custom-query" title="Custom Query" data-toggle="" class="no-submenu">
+                           <span class="item-text">Custom Query</span>
                         </a>
-                        <a class="btn-glow small inverse">
-                            <i class="shuffle"></i>
+                     </li>
+                     <li>
+                        <a href="/rest/insights" title="Insights" data-toggle="" class="no-submenu">
+                           <span class="item-text">Insights</span>
                         </a>
-                        <a class="btn-glow small primary">
-                            <i class="setting"></i>
-                        </a>
-                        <a class="btn-glow small default">
-                            <i class="attach"></i>
-                        </a>
-                        <div class="ui-select">
-                            <select>
-                                <option selected>Dropdown</option>
-                                <option>Custom selects</option>
-                                <option>Pure css styles</option>
-                            </select>
-                        </div>
+                     </li>
+                  </ul>
+                  <!-- END SubMenu item-->
+               </li>
+               <li>
+                  <a href="/clusters" title="Clusters" data-toggle="" class="no-submenu">
+                     <em class="fa fa-cube"></em>
+                     <span class="item-text">Clusters</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="/indices" title="Indices" data-toggle="" class="no-submenu">
+                     <em class="fa fa-cube"></em>
+                     <span class="item-text">Indices</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="/mappings" title="Mappings" data-toggle="" class="no-submenu">
+                     <em class="fa fa-cube"></em>
+                     <span class="item-text">Mappings</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="/stats" title="Stats" data-toggle="" class="no-submenu">
+                     <em class="fa fa-cube"></em>
+                     <span class="item-text">Stats</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="/settings" title="Settings" data-toggle="" class="no-submenu">
+                     <em class="fa fa-cube"></em>
+                     <span class="item-text">Settings</span>
+                  </a>
+               </li>
+               <!-- END Menu-->
+            </ul>
+         </nav>
+         <!-- END Sidebar (left)-->
+      </aside>
+      <!-- End aside-->
+      <!-- START Main section-->
+      <section>
+         <!-- START Page content-->
+         <div class="content-wrapper">
+            <h3>Dashboard</h3>
+            @yield('content')
+         </div>
+         <!-- END Page content-->
+      </section>
+      <!-- END Main section-->
+   </div>
+   <!-- END Main wrapper-->
 
-                        <div class="btn-group">
-                            <button class="glow left">LEFT</button>
-                            <button class="glow right">RIGHT</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end UI elements section -->
-
-            <!-- table sample -->
-            <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
-            <div class="table-products section">
-                <div class="row head">
-                    <div class="col-md-12">
-                        <h4>Products <small>Table sample</small></h4>
-                    </div>
-                </div>
-
-                <div class="row filter-block">
-                    <div class="col-md-8 col-md-offset-5">
-                        <div class="ui-select">
-                            <select>
-                              <option>Filter users</option>
-                              <option>Signed last 30 days</option>
-                              <option>Active users</option>
-                            </select>
-                        </div>
-                        <input type="text" class="search">
-                        <a class="btn-flat new-product">+ Add product</a>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th class="col-md-3">
-                                    <input type="checkbox">
-                                    Product
-                                </th>
-                                <th class="col-md-3">
-                                    <span class="line"></span>Description
-                                </th>
-                                <th class="col-md-3">
-                                    <span class="line"></span>Status
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- row -->
-                            <tr class="first">
-                                <td>
-                                    <input type="checkbox">
-                                    <div class="img">
-                                        <img src="/assets/img/dashboard/table-img.png" alt="pic" />
-                                    </div>
-                                    <a href="#">There are many variations </a>
-                                </td>
-                                <td class="description">
-                                    if you are going to use a passage of Lorem Ipsum.
-                                </td>
-                                <td>
-                                    <span class="label label-success">Active</span>
-                                    <ul class="actions">
-                                        <li><i class="table-edit"></i></li>
-                                        <li><i class="table-settings"></i></li>
-                                        <li class="last"><i class="table-delete"></i></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <!-- row -->
-                            <tr>
-                                <td>
-                                    <input type="checkbox">
-                                    <div class="img">
-                                        <img src="/assets/img/dashboard/table-img.png" alt="pic" />
-                                    </div>
-                                    <a href="#">Internet tend</a>
-                                </td>
-                                <td class="description">
-                                    There are many variations of passages.
-                                </td>
-                                <td>
-                                    <ul class="actions">
-                                        <li><i class="table-edit"></i></li>
-                                        <li><i class="table-settings"></i></li>
-                                        <li class="last"><i class="table-delete"></i></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <!-- row -->
-                            <tr>
-                                <td>
-                                    <input type="checkbox">
-                                    <div class="img">
-                                        <img src="/assets/img/dashboard/table-img.png" alt="pic" />
-                                    </div>
-                                    <a href="#">Many desktop publishing </a>
-                                </td>
-                                <td class="description">
-                                    if you are going to use a passage of Lorem Ipsum.
-                                </td>
-                                <td>
-                                    <ul class="actions">
-                                        <li><i class="table-edit"></i></li>
-                                        <li><i class="table-settings"></i></li>
-                                        <li class="last"><i class="table-delete"></i></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <!-- row -->
-                            <tr>
-                                <td>
-                                    <input type="checkbox">
-                                    <div class="img">
-                                        <img src="/assets/img/dashboard/table-img.png" alt="pic" />
-                                    </div>
-                                    <a href="#">Generate Lorem </a>
-                                </td>
-                                <td class="description">
-                                    There are many variations of passages.
-                                </td>
-                                <td>
-                                    <span class="label label-info">Standby</span>
-                                    <ul class="actions">
-                                        <li><i class="table-edit"></i></li>
-                                        <li><i class="table-settings"></i></li>
-                                        <li class="last"><i class="table-delete"></i></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <!-- row -->
-                            <tr>
-                                <td>
-                                    <input type="checkbox">
-                                    <div class="img">
-                                        <img src="/assets/img/dashboard/table-img.png" alt="pic" />
-                                    </div>
-                                    <a href="#">Internet tend</a>
-                                </td>
-                                <td class="description">
-                                    There are many variations of passages.
-                                </td>
-                                <td>
-                                    <ul class="actions">
-                                        <li><i class="table-edit"></i></li>
-                                        <li><i class="table-settings"></i></li>
-                                        <li class="last"><i class="table-delete"></i></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <ul class="pagination">
-                    <li><a href="#">&laquo;</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                </ul>
-            </div>
-            <!-- end table sample -->
-        </div>
-    </div>
-
-
-   <!-- scripts -->
-    <script src="/assets/js/dashboard.js"></script>
+   <script src="/assets/js/dashboard.js" type="application/javascript"></script>
 </body>
+
 </html>

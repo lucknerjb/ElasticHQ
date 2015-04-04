@@ -3,9 +3,12 @@ module.exports = function(grunt) {
    [
       'copy:images_dashboard',
       'concat:dashboard_js',
+      'concat:dashboard_top_js',
       'concat:dashboard_css',
       'copy:dashboard_js',
+      'copy:dashboard_top_js',
       'copy:dashboard_css',
+      'copy:dashboard_fonts',
       // 'concat:dashboard_js',
       // 'concat:students_profile_app_js',
       // 'concat:student_profile_js',

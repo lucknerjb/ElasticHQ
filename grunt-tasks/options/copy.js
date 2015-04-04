@@ -5,14 +5,9 @@ module.exports = {
       dest: 'public/assets/js/authentication.js'
    },
 
-   login_css: {
-      src: 'build/login.css',
-      dest: 'public/assets/css/login.css'
-   },
-
-   register_css: {
-      src: 'build/register.css',
-      dest: 'public/assets/css/register.css'
+   authentication_css: {
+      src: 'build/authentication.css',
+      dest: 'public/assets/css/authentication.css'
    },
 
    website_js: {
@@ -30,6 +25,11 @@ module.exports = {
       dest: 'public/assets/js/dashboard.js'
    },
 
+   dashboard_top_js: {
+      src: 'build/dashboard_top.js',
+      dest: 'public/assets/js/dashboard_top.js'
+   },
+
    dashboard_css: {
       src: 'build/dashboard.css',
       dest: 'public/assets/css/dashboard.css'
@@ -41,14 +41,9 @@ module.exports = {
       dest: 'public/assets/js/authentication.min.js'
    },
 
-   login_min_css: {
-      src: 'build/login.min.css',
-      dest: 'public/assets/css/login.min.css'
-   },
-
-   register_min_css: {
-      src: 'build/register.min.css',
-      dest: 'public/assets/css/register.min.css'
+   authentication_min_css: {
+      src: 'build/authentication.min.css',
+      dest: 'public/assets/css/authentication.min.css'
    },
 
    website_min_js: {
@@ -66,6 +61,11 @@ module.exports = {
       dest: 'public/assets/js/dashboard.min.js'
    },
 
+   dashboard_top_min_js: {
+      src: 'build/dashboard_top.min.js',
+      dest: 'public/assets/js/dashboard_top.min.js'
+   },
+
    dashboard_min_css: {
       src: 'build/dashboard.min.css',
       dest: 'public/assets/css/dashboard.min.css'
@@ -74,16 +74,9 @@ module.exports = {
    // Generic files
    dashboard_fonts: {
       expand: true,
-      cwd: 'core/src/css/dashboard/vendor/fontawesome/fonts',
+      cwd: 'resources/assets/dashboard/fonts',
       src: ['*.*'],
-      dest: 'public/fonts/dashboard'
-   },
-
-   images_shared: {
-      expand: true,
-      cwd: 'resources/assets/shared/img',
-      src: ['**/*'],
-      dest: 'public/img/shared'
+      dest: 'public/assets/fonts/dashboard'
    },
 
    images_dashboard: {

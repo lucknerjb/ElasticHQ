@@ -4,7 +4,6 @@ module.exports = function(grunt) {
       'assets:website',
       'assets:authentication',
       'assets:dashboard',
-      'newer:copy:images_shared',
       'newer:copy:images_dashboard'
    ]);
 };
