@@ -32,10 +32,10 @@
          <div class="navbar-header">
             <a href="index.html" class="navbar-brand">
                <div class="brand-logo">
-                  <img src="/assets/img/dashboard/logo.png" alt="App Logo" class="img-responsive">
+                  <h3 style="margin-top:5px;">{!! $currentAccount->name !!}</h3>
                </div>
                <div class="brand-logo-collapsed">
-                  <img src="/assets/img/dashboard/logo-single.png" alt="App Logo" class="img-responsive">
+                  <h3 style="margin-top:5px;">{!! $currentAccount->name !!}</h3>
                </div>
             </a>
          </div>
@@ -53,6 +53,24 @@
                   <a href="#" data-toggle-state="aside-toggled" class="visible-xs">
                      <em class="fa fa-navicon"></em>
                   </a>
+               </li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+               <li>
+                  {!! Form::open(['url' => '/clusters/select-cluster', 'id' => 'select-cluster-form']) !!}
+                  <select id="select-cluster" name="cluster_id" class="form-control" style="margin-top: 10px;">
+                     <option value="">Select a cluster</option>
+                     @foreach ($accountClusters as $cluster)
+                        <?php
+                           $selected = '';
+                           if ($currentCluster && $currentCluster['id'] === $cluster->id) {
+                              $selected = ' selected="selected';
+                           }
+                        ?>
+                        <option value="{!! $cluster->id !!}" {!! $selected !!}>{!! $cluster->name !!}</option>
+                     @endforeach
+                  </select>
+                  {!! Form::close() !!}
                </li>
             </ul>
             <!-- END Left navbar-->
@@ -104,8 +122,8 @@
                         </a>
                      </li>
                      <li>
-                        <a href="/rest/insights" title="Insights" data-toggle="" class="no-submenu">
-                           <span class="item-text">Insights</span>
+                        <a href="/rest/raw-api" title="Raw API" data-toggle="" class="no-submenu">
+                           <span class="item-text">Raw API</span>
                         </a>
                      </li>
                   </ul>
@@ -123,13 +141,7 @@
                      <span class="item-text">Indices</span>
                   </a>
                </li>
-               <li>
-                  <a href="/mappings" title="Mappings" data-toggle="" class="no-submenu">
-                     <em class="fa fa-cube"></em>
-                     <span class="item-text">Mappings</span>
-                  </a>
-               </li>
-               <li>
+               <li class="hide">
                   <a href="/stats" title="Stats" data-toggle="" class="no-submenu">
                      <em class="fa fa-cube"></em>
                      <span class="item-text">Stats</span>
@@ -139,6 +151,18 @@
                   <a href="/settings" title="Settings" data-toggle="" class="no-submenu">
                      <em class="fa fa-cube"></em>
                      <span class="item-text">Settings</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="/settings" title="Settings" data-toggle="" class="no-submenu">
+                     <em class="fa fa-cube"></em>
+                     <span class="item-text">Roles</span>
+                  </a>
+               </li>
+               <li>
+                  <a href="/settings" title="Settings" data-toggle="" class="no-submenu">
+                     <em class="fa fa-cube"></em>
+                     <span class="item-text">Permissions</span>
                   </a>
                </li>
                <!-- END Menu-->
@@ -158,6 +182,32 @@
    <!-- END Main wrapper-->
 
    <script src="/assets/js/dashboard.js" type="application/javascript"></script>
+
+   <script type="text/javascript">
+      $(document).ready(function() {
+         // Select Cluster
+         $(document).on('change', '#select-cluster', function(e) {
+            var $elem = $(this);
+            var clusterId = $elem.val();
+
+            if (clusterId === '') {
+               return;
+            }
+
+            $.ajax({
+               type: 'POST',
+               url: '/clusters/select_cluster',
+               data: $('#select-cluster-form').serializeJSON(),
+               success: function(response) {
+                  console.log(response);
+               },
+               error: function(response) {
+                  console.log(response);
+               }
+            });
+         });
+      });
+   </script>
 </body>
 
 </html>

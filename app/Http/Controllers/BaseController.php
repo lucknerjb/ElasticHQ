@@ -4,6 +4,7 @@ use View;
 use Auth;
 use Response;
 use Agent;
+use Session;
 use ElasticHQ\Domain\Users\User;
 use ElasticHQ\Domain\Accounts\Account;
 use Illuminate\Foundation\Bus\DispatchesCommands;
@@ -13,6 +14,8 @@ class BaseController extends Controller {
 
    protected $currentUser;
    protected $currentAccount;
+   protected $currentCluster;
+   protected $currentClusterId;
 
    public function __construct() {
       $this->beforeFilter(function() {
@@ -32,6 +35,15 @@ class BaseController extends Controller {
 
          if (Auth::check()) {
             $this->currentAccount = Account::find(Auth::user()->account_id);
+            View::share('currentAccount', $this->currentAccount);
+
+            // Get a list of clusters
+            $accountClusters = $this->currentAccount->clusters()->get();
+            View::share('accountClusters', $accountClusters);
+
+            // Selected cluster
+            $this->autoselectCluster($accountClusters);
+            View::share('currentCluster', $this->currentCluster);
          }
 
          // // Base Config
@@ -46,6 +58,21 @@ class BaseController extends Controller {
          //    $this->currentUser = $user;
          // }
       });
+   }
+
+   private function autoselectCluster($clusters) {
+      if (!$clusters) {
+         return;
+      }
+
+      $currentCluster = Session::get('currentCluster');
+
+      if (!$currentCluster) {
+         Session::put('currentCluster', $clusters[0]->toArray());
+      }
+
+      $this->currentCluster = Session::get('currentCluster');
+      $this->currentClusterId = $this->currentCluster['id'];
    }
 
    protected function setLoggedInUser(User $user) {

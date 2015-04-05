@@ -35,9 +35,22 @@ $router->group(['middleware' => 'auth'], function() use ($router) {
    $router->get('/dashboard', ['uses' => 'DashboardsController@index']);
 
    // Clusters
+   $router->post('/clusters/select_cluster', ['uses' => 'ClustersController@select_cluster']);
+
+   // Routes depending on currentCluster
+   $router->get('/cluster', ['uses' => 'ClustersController@show']);
+   $router->get('/indices/{indiceName}', ['uses' => 'IndicesController@show']);
+   $router->get('/indices/{indiceName}/mappings', ['uses' => 'IndicesController@mappings']);
+   $router->get('/indices/{indiceName}/mappings/{typeName}', ['uses' => 'MappingsController@show']);
+   $router->get('/indices/{indiceName}/aliases', ['uses' => 'IndicesController@aliases']);
+   $router->get('/indices/{indiceName}/shards', ['uses' => 'IndicesController@shards']);
+   $router->get('/indices/{indiceName}/manage', ['uses' => 'IndicesController@manage']);
+
+
    $router->get('/clusters/{clusterId}/nodes', ['uses' => 'ClustersController@index']);
-   $router->get('/clusters/{clusterId}/indices/{indiceName}', ['uses' => 'IndicesController@show']);
    $router->resource('clusters', 'ClustersController');
+   $router->get('/settings', ['uses' => 'SettingsController@show']);
+   $router->post('/settings', ['uses' => 'SettingsController@update']);
 
    // // Indices
    // $router->get('/indices', ['uses' => 'IndicesController@index']);

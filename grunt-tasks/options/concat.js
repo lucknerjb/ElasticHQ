@@ -62,6 +62,7 @@ module.exports = {
          // 'resources/assets/dashboard/plugins/flot/jquery.flot.pie.min.js',
          // 'resources/assets/dashboard/plugins/flot/jquery.flot.time.min.js',
          // 'resources/assets/dashboard/plugins/flot/jquery.flot.categories.min.js',
+         'resources/assets/dashboard/plugins/jquery.serializejson/jquery.serializejson.js',
          'resources/assets/dashboard/js/app.js',
       ],
       dest: 'build/dashboard.js'

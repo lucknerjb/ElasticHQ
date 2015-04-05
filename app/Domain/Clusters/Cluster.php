@@ -9,10 +9,11 @@ use Monolog\Handler\SyslogHandler;
 use Monolog\Processor\IntrospectionProcessor;
 use ElasticHQ\Domain\ClusterDetails\ClusterDetail;
 use ElasticHQ\Domain\IndiceDetails\IndiceDetail;
+use ElasticHQ\Domain\NodeDetails\NodeDetail;
 
 class Cluster extends Model {
    protected $table = 'clusters';
-   protected $fillable = ['name', 'endpoint', 'username', 'password', 'use_ssl', 'port'];
+   protected $fillable = ['endpoint', 'username', 'password', 'use_ssl', 'port'];
    protected $appends = ['url_slug', 'connection_url', 'health', 'details', 'state', 'settings'];
 
    public function account() {

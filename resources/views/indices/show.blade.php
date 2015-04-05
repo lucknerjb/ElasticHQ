@@ -2,9 +2,12 @@
 
 @section('content')
    <div class="content-wrapper">
-      <h3>
-         Cluster: <span class="text-muted">{!! $cluster->name !!}</span> / Indice: <span class="text-muted">{!! $indiceName !!}</span>
-         <a href="/clusters/{!! $cluster->url_slug !!}/edit" class="btn btn-primary pull-right">Edit Cluster</a>
+      <h3 class="clearfix">
+         <span class="page-title" style="margin-bottom: 10px; display: inline-block;">
+            Indice Details | <span class="text-muted">{!! $indiceName !!}</span>
+         </span>
+
+         @include('partials.indices_menu')
       </h3>
       <div class="row">
          <section class="col-md-12">

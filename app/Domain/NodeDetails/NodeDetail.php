@@ -1,6 +1,6 @@
 <?php
 
-namespace ElasticHQ\Domain\IndiceDetails;
+namespace ElasticHQ\Domain\NodeDetails;
 
 use Illuminate\Database\Eloquent\Model;
 use ElasticHQ\Domain\Clusters\Cluster;
@@ -9,82 +9,32 @@ use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Processor\IntrospectionProcessor;
 
-class IndiceDetail extends Model {
-   protected $appends = ['name', 'stats', 'settings', 'status', 'segments', 'mappings', 'aliases'];
-   public $indiceName;
+class NodeDetail extends Model {
+   protected $appends = ['identifier', 'stats'];
+   public $nodeName;
+   public $nodeIdentifier;
    public $cluster;
 
-   public function __construct($indiceName, Array $cluster) {
-      $this->indiceName = $indiceName;
+   public function __construct($nodeIdentifier, Array $cluster) {
+      $this->nodeIdentifier = $nodeIdentifier;
       $this->cluster = $cluster;
    }
 
-   public function getNameAttribute() {
-      return $this->indiceName;
+   public function getIdentifierAttribute() {
+      return $this->nodeIdentifier;
    }
 
    public function getStatsAttribute() {
       $client = ESClient::getClient($this->cluster['connection_url']);
-      $stats = $client->indices()->stats(['index' => [$this->indiceName]]);
+      $stats = $client->nodes()->stats();
 
-      return $stats;
-   }
-
-   public function getSettingsAttribute() {
-      $client = ESClient::getClient($this->cluster['connection_url']);
-      $settings = $client->indices()->getSettings(['index' => [$this->indiceName]]);
-
-      return $settings;
-   }
-
-   public function getStatusAttribute() {
-      $client = ESClient::getClient($this->cluster['connection_url']);
-      $status = $client->indices()->status(['index' => [$this->indiceName]]);
-
-      return $status;
-   }
-
-   public function getSegmentsAttribute() {
-      $client = ESClient::getClient($this->cluster['connection_url']);
-      $segments = $client->indices()->segments(['index' => [$this->indiceName]]);
-
-      return $segments;
-   }
-
-   public function getMappingsAttribute() {
-      $client = ESClient::getClient($this->cluster['connection_url']);
-      $mappings = $client->indices()->getMapping(['index' => [$this->indiceName]]);
-
-      return $mappings;
-   }
-
-   public function getAliasesAttribute() {
-      $client = ESClient::getClient($this->cluster['connection_url']);
-      $aliases = $client->indices()->getAliases(['index' => [$this->indiceName]]);
-
-      return $aliases;
-   }
-
-   public static function fetchInfo($connectionUrl, $indiceName) {
-      $client = ESClient::getClient($connectionUrl);
-      $params = ['index' => [$indiceName]];
-      $stats = $client->indices()->stats($params);
-      $settings = $client->indices()->getSettings();
-
-      return [
-         'stats' => $stats,
-         'settings' => $settings
-      ];
+      return $stats['nodes'][$this->nodeIdentifier];
    }
 
    public function parse() {
       $output = [];
       $indice = $this->toArray();
       $indiceDetails = $indice['stats']['indices'][$this->name];
-
-      // echo '<pre>';
-      // print_r($output);
-      // die;
 
       $output['name'] = $this->name;
       $output['docs_count'] = $indiceDetails['primaries']['docs']['count'];
@@ -93,11 +43,6 @@ class IndiceDetail extends Model {
       $output['total_size'] = $indice['stats']['_all']['total']['store']['size_in_bytes'];
       $output['shards_count'] = $indice['settings'][$this->name]['settings']['index']['number_of_shards'];
       $output['replicas_count'] = $indice['settings'][$this->name]['settings']['index']['number_of_replicas'];
-
-      $output['mappings'] = [];
-      foreach($indice['mappings'][$this->name]['mappings'] as $type => $mapping) {
-         $output['mappings'][$type] = $mapping['properties'];
-      }
 
       $output['search'] = [
          'query_total' => $indice['stats']['_all']['total']['search']['query_total'],

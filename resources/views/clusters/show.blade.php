@@ -16,7 +16,7 @@
    <div class="content-wrapper">
       <h3>
          Cluster: <span class="text-muted">{!! $cluster->name !!}</span>
-         <a href="/clusters/{!! $cluster->url_slug !!}/edit" class="btn btn-primary pull-right">Edit Cluster</a>
+         <a href="/cluster/edit" class="btn btn-primary pull-right">Edit Cluster</a>
       </h3>
       <div class="row">
          <section class="col-md-12">
@@ -98,7 +98,7 @@
                         <tbody>
                            @foreach($cluster->indice_details as $indice)
                               <tr>
-                                 <td><a href="/clusters/{!! $cluster->url_slug !!}/indices/{!! $indice['name'] !!}">{!! $indice['name'] !!}</a></td>
+                                 <td><a href="/indices/{!! $indice['name'] !!}">{!! $indice['name'] !!}</a></td>
                                  <td>{!! $indice['docs_count'] !!}</td>
                                  <td>{!! $indice['primary_size'] !!} bytes</td>
                                  <td>{!! $indice['shards_count'] !!}</td>
