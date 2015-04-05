@@ -3,7 +3,7 @@
 namespace ElasticHQ\Domain\Clusters;
 
 use Illuminate\Database\Eloquent\Model;
-use Elasticsearch\Client as ESClient;
+use ElasticHQ\Domain\ES\ESClient;
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Processor\IntrospectionProcessor;
@@ -13,7 +13,7 @@ use ElasticHQ\Domain\IndiceDetails\IndiceDetail;
 class Cluster extends Model {
    protected $table = 'clusters';
    protected $fillable = ['name', 'endpoint', 'username', 'password', 'use_ssl', 'port'];
-   protected $appends = ['url_slug'];
+   protected $appends = ['url_slug', 'connection_url', 'health', 'details', 'state', 'settings'];
 
    public function account() {
       return $this->belongsTo('ElasticHQ\Domain\Accounts\Account');
@@ -29,14 +29,43 @@ class Cluster extends Model {
 
    public function getDetailsAttribute() {
       // Fetch some basic details about the cluster
-      $rawInfo = ClusterDetail::fetchInfo($this);
+      $rawInfo = ClusterDetail::fetchInfo($this->connection_url);
       return ClusterDetail::formatInfo($rawInfo);
    }
 
+   public function getStateAttribute() {
+      $client = ESClient::getClient($this->connection_url);
+      $state = $client->cluster()->state();
+
+      return $state;
+   }
+
+   public function getHealthAttribute() {
+      $client = ESClient::getClient($this->connection_url);
+      $health = $client->cluster()->health();
+
+      return $health;
+   }
+
+   public function getSettingsAttribute() {
+      $client = ESClient::getClient($this->connection_url);
+      $settings = $client->cluster()->getSettings();
+
+      return $settings;
+   }
+
    public function getIndiceDetailsAttribute() {
+      $output = [];
+
+      $indices = array_keys($this->state['routing_table']['indices']);
+
       // Fetch some basic details about the cluster's indices
-      $rawInfo = IndiceDetail::fetchInfo($this);
-      return IndiceDetail::formatInfo($rawInfo);
+      foreach($indices as $indiceName) {
+         $indice = new IndiceDetail($indiceName, $this->toArray());
+         $output[] = $indice->parse();
+      }
+
+      return $output;
    }
 
    public function getConnectionUrlAttribute() {
@@ -66,16 +95,7 @@ class Cluster extends Model {
    }
 
    public function getIndice($indiceName) {
-      $rawInfo = IndiceDetail::fetchInfo($this);
-
-      if (!$rawInfo['indices']) {
-         return false;
-      }
-
-      if (!$rawInfo['indices'][$indiceName]) {
-         return false;
-      }
-
-      return $rawInfo['indices'][$indiceName];
+      $indice = new IndiceDetail($indiceName, $this->toArray());
+      return $indice->parse();
    }
 }

@@ -9,8 +9,8 @@ use Monolog\Handler\SyslogHandler;
 use Monolog\Processor\IntrospectionProcessor;
 
 class ClusterDetail {
-   public static function fetchInfo(Cluster $cluster) {
-      $client = ESClient::getClient($cluster);
+   public static function fetchInfo($connectionUrl) {
+      $client = ESClient::getClient($connectionUrl);
       $info = $client->cluster()->stats();
 
       return $info;

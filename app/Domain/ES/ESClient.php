@@ -9,14 +9,14 @@ use Monolog\Handler\SyslogHandler;
 use Monolog\Processor\IntrospectionProcessor;
 
 class ESClient {
-   public static function pingCluster(Cluster $cluster) {
-      $client = self::getClient($cluster);
+   public static function pingCluster($connectionUrl) {
+      $client = self::getClient($connectionUrl);
       $ping = $client->ping();
 
       return (bool) $ping;
    }
 
-   public static function getClient(Cluster $cluster) {
+   public static function getClient($connectionUrl, $extraParams = []) {
       // Build a Monolog logger that uses the SyslogHandler
       $logger    = new Logger('log');
       $handler   = new SyslogHandler('my_user');
@@ -28,10 +28,16 @@ class ESClient {
       // Over-ride the client's logger object with your own
       $params['logging']   = true;
       // $params['logObject'] = $logger;
-      $params['hosts'] = [$cluster->connection_url];
+      $params['hosts'] = [$connectionUrl];
       $params['logPath'] = storage_path() . '/logs/elasticsearch.log';
       $params['logPermission'] = 0664;
       $params['guzzleOptions']['curl.options'][CURLOPT_CONNECTTIMEOUT] = 2.0;
+
+      // Add extra parameters
+      if ($extraParams) {
+         $params = array_merge($params, $extraParams);
+      }
+
       $client = new ES($params);
 
       return $client;

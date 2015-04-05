@@ -16,6 +16,8 @@ class IndicesController extends BaseController {
       $cluster = Cluster::findOrFail($clusterId);
       $indice = $cluster->getIndice($indiceName);
 
+      // $this->pr($indice);
+
       return view('indices.show', compact('cluster', 'indice', 'indiceName'));
    }
 }
