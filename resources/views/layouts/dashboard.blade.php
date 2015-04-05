@@ -135,10 +135,18 @@
                      <span class="item-text">Clusters</span>
                   </a>
                </li>
+               @if ($currentCluster)
+                  <li>
+                     <a href="/indices" title="Indices" data-toggle="" class="no-submenu">
+                        <em class="fa fa-cube"></em>
+                        <span class="item-text">Indices</span>
+                     </a>
+                  </li>
+               @endif
                <li>
-                  <a href="/indices" title="Indices" data-toggle="" class="no-submenu">
+                  <a href="/explore" title="Explore" data-toggle="" class="no-submenu">
                      <em class="fa fa-cube"></em>
-                     <span class="item-text">Indices</span>
+                     <span class="item-text">Explore</span>
                   </a>
                </li>
                <li class="hide">
@@ -182,32 +190,6 @@
    <!-- END Main wrapper-->
 
    <script src="/assets/js/dashboard.js" type="application/javascript"></script>
-
-   <script type="text/javascript">
-      $(document).ready(function() {
-         // Select Cluster
-         $(document).on('change', '#select-cluster', function(e) {
-            var $elem = $(this);
-            var clusterId = $elem.val();
-
-            if (clusterId === '') {
-               return;
-            }
-
-            $.ajax({
-               type: 'POST',
-               url: '/clusters/select_cluster',
-               data: $('#select-cluster-form').serializeJSON(),
-               success: function(response) {
-                  console.log(response);
-               },
-               error: function(response) {
-                  console.log(response);
-               }
-            });
-         });
-      });
-   </script>
 </body>
 
 </html>

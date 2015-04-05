@@ -34,7 +34,7 @@
                   @include('partials.widget', ['caption' => 'Documents', 'value' => $cluster->details['docs_count']])
                </div>
                <div class="col-sm-2">
-                  @include('partials.widget', ['caption' => 'Size', 'value' => $cluster->details['store_size'] . 'B'])
+                  @include('partials.widget', ['caption' => 'Size', 'value' => Helpers::bytesToHuman($cluster->details['store_size'])])
                </div>
                <div class="col-sm-2">
                   @include('partials.widget', ['caption' => 'Deleted Docs', 'value' => $cluster->details['deleted_docs_count']])
@@ -100,7 +100,7 @@
                               <tr>
                                  <td><a href="/indices/{!! $indice['name'] !!}">{!! $indice['name'] !!}</a></td>
                                  <td>{!! $indice['docs_count'] !!}</td>
-                                 <td>{!! $indice['primary_size'] !!} bytes</td>
+                                 <td>{!! Helpers::bytesToHuman($indice['primary_size']) !!}</td>
                                  <td>{!! $indice['shards_count'] !!}</td>
                                  <td>{!! $indice['replicas_count'] !!}</td>
                               </tr>

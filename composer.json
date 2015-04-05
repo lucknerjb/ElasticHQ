@@ -28,7 +28,10 @@
 		],
 		"psr-4": {
 			"ElasticHQ\\": "app/"
-		}
+		},
+      "files": [
+         "app/Classes/Helpers.php"
+      ]
 	},
 	"autoload-dev": {
 		"classmap": [

@@ -35,7 +35,7 @@
                                     <td>{!! $cluster->details['shards_count'] !!}</td>
                                     <td>{!! $cluster->details['indices_count'] !!}</td>
                                     <td>{!! $cluster->details['docs_count'] !!}</td>
-                                    <td>{!! $cluster->details['store_size'] !!} bytes</td>
+                                    <td>{!! Helpers::bytesToHuman($cluster->details['store_size']) !!}</td>
                                     <td>
                                        <a class="btn btn-primary btn-sm" href="/clusters/{!! $cluster->url_slug !!}">View Cluster</a>
                                     </td>

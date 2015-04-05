@@ -11,6 +11,14 @@ use ElasticHQ\Domain\ES\ESClient;
 use ElasticHQ\Domain\ClusterDetails\ClusterDetail;
 
 class IndicesController extends BaseController {
+   public function index()
+   {
+      $cluster = Cluster::findOrFail($this->currentClusterId);
+      $indices = $cluster->indice_details;
+
+      return view('indices.index', compact('cluster', 'indices'));
+   }
+
    public function show($indiceName)
    {
       $cluster = Cluster::findOrFail($this->currentClusterId);

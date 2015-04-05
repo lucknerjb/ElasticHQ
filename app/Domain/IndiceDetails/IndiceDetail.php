@@ -94,9 +94,15 @@ class IndiceDetail extends Model {
       $output['shards_count'] = $indice['settings'][$this->name]['settings']['index']['number_of_shards'];
       $output['replicas_count'] = $indice['settings'][$this->name]['settings']['index']['number_of_replicas'];
 
+      // echo '<pre>';
+      // print_r($this->toArray());
+      // die;
+
       $output['mappings'] = [];
-      foreach($indice['mappings'][$this->name]['mappings'] as $type => $mapping) {
-         $output['mappings'][$type] = $mapping['properties'];
+      if (isset($indice['mappings'][$this->name])) {
+         foreach($indice['mappings'][$this->name]['mappings'] as $type => $mapping) {
+            $output['mappings'][$type] = $mapping['properties'];
+         }
       }
 
       $output['search'] = [

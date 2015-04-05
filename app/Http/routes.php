@@ -39,12 +39,18 @@ $router->group(['middleware' => 'auth'], function() use ($router) {
 
    // Routes depending on currentCluster
    $router->get('/cluster', ['uses' => 'ClustersController@show']);
+   $router->get('/indices', ['uses' => 'IndicesController@index']);
    $router->get('/indices/{indiceName}', ['uses' => 'IndicesController@show']);
    $router->get('/indices/{indiceName}/mappings', ['uses' => 'IndicesController@mappings']);
    $router->get('/indices/{indiceName}/mappings/{typeName}', ['uses' => 'MappingsController@show']);
    $router->get('/indices/{indiceName}/aliases', ['uses' => 'IndicesController@aliases']);
    $router->get('/indices/{indiceName}/shards', ['uses' => 'IndicesController@shards']);
    $router->get('/indices/{indiceName}/manage', ['uses' => 'IndicesController@manage']);
+   $router->get('/indices/{indiceName}/documents/{id}', ['uses' => 'DocumentsController@show']);
+   $router->get('/explore', ['uses' => 'DocumentsController@index']);
+   $router->post('/explore/query', ['uses' => 'DocumentsController@query']);
+   $router->post('/explore/get_index_types', ['uses' => 'DocumentsController@get_index_types']);
+   $router->post('/explore/get_type_fields', ['uses' => 'DocumentsController@get_type_fields']);
 
 
    $router->get('/clusters/{clusterId}/nodes', ['uses' => 'ClustersController@index']);

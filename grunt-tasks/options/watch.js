@@ -1,7 +1,7 @@
 module.exports = {
    dev: {
       files: [
-         'resources/**/**',
+         'resources/assets/**/**',
       ],
       tasks: ['assets:dev']
    }
