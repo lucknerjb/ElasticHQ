@@ -5,7 +5,9 @@
       <h3>
          Clusters
 
-         <a href="/clusters/create" class="btn btn-primary pull-right">Add Cluster</a>
+         @if ($currentUser->can('CLUSTERS.MANAGE'))
+            <a href="/clusters/create" class="btn btn-primary pull-right">Add Cluster</a>
+         @endif
       </h3>
       <div class="row">
          <section class="col-md-12">

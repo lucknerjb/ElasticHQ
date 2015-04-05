@@ -15,8 +15,11 @@
 @section('content')
    <div class="content-wrapper">
       <h3>
-         Cluster: <span class="text-muted">{!! $cluster->name !!}</span>
-         <a href="/cluster/edit" class="btn btn-primary pull-right">Edit Cluster</a>
+         Cluster / <span class="text-muted">{!! $cluster->name !!}</span>
+
+         @if ($currentUser->can('CLUSTERS.MANAGE'))
+            <a href="/cluster/edit" class="btn btn-primary pull-right">Edit Cluster</a>
+         @endif
       </h3>
       <div class="row">
          <section class="col-md-12">

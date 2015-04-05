@@ -30,7 +30,8 @@
 			"ElasticHQ\\": "app/"
 		},
       "files": [
-         "app/Classes/Helpers.php"
+         "app/Classes/Helpers.php",
+         "app/Classes/PermissionsMatrix.php"
       ]
 	},
 	"autoload-dev": {

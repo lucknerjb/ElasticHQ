@@ -30,10 +30,11 @@ class BaseController extends Controller {
          View::share('pageSaveButton', '');
          View::share('baseUrl', env('BASEURL'));
          View::share('apiUrl', env('APIURL'));
-         View::share('user', Auth::user());
          View::share('currentUser', Auth::user());
 
          if (Auth::check()) {
+            $this->currentUser = Auth::user();
+
             $this->currentAccount = Account::find(Auth::user()->account_id);
             View::share('currentAccount', $this->currentAccount);
 

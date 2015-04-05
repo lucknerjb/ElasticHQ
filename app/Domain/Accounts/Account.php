@@ -16,6 +16,10 @@ class Account extends Model {
       return $this->hasMany('ElasticHQ\Domain\Clusters\Cluster');
    }
 
+   public function groups() {
+      return $this->hasMany('ElasticHQ\Domain\Groups\Group');
+   }
+
    public function addUser($user) {
       return $this->users()->save($user);
    }

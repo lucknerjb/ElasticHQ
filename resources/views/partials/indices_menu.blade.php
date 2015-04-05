@@ -8,7 +8,9 @@
    <a href="/indices/{!! $indice['name'] !!}/shards" class="btn btn-primary">
       Shards
    </a>
-   <a href="/indices/{!! $indice['name'] !!}/manage" class="btn btn-primary">
-      Manage
-   </a>
+   @if ($currentUser->can('INDICE.MANAGE'))
+      <a href="/indices/{!! $indice['name'] !!}/manage" class="btn btn-primary">
+         Manage
+      </a>
+   @endif
 </div>

@@ -52,6 +52,11 @@ $router->group(['middleware' => 'auth'], function() use ($router) {
    $router->post('/explore/get_index_types', ['uses' => 'DocumentsController@get_index_types']);
    $router->post('/explore/get_type_fields', ['uses' => 'DocumentsController@get_type_fields']);
 
+   $router->resource('groups', 'GroupsController');
+   $router->resource('users', 'UsersController');
+   $router->resource('permissions', 'PermissionsController');
+
+
 
    $router->get('/clusters/{clusterId}/nodes', ['uses' => 'ClustersController@index']);
    $router->resource('clusters', 'ClustersController');

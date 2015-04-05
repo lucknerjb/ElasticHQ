@@ -62,12 +62,13 @@
                      <option value="">Select a cluster</option>
                      @foreach ($accountClusters as $cluster)
                         <?php
+                        echo 1;
                            $selected = '';
                            if ($currentCluster && $currentCluster['id'] === $cluster->id) {
-                              $selected = ' selected="selected';
+                              $selected = ' selected="selected"';
                            }
                         ?>
-                        <option value="{!! $cluster->id !!}" {!! $selected !!}>{!! $cluster->name !!}</option>
+                        <option value="{!! $cluster->id !!}" {!! $selected !!}>{!! $cluster->name . ' (' . $cluster->endpoint . ')' !!}</option>
                      @endforeach
                   </select>
                   {!! Form::close() !!}
@@ -155,22 +156,51 @@
                      <span class="item-text">Stats</span>
                   </a>
                </li>
+               @if ($currentUser->can('SETTINGS.MANAGE'))
+                  <li>
+                     <a href="/settings" title="Settings" data-toggle="" class="no-submenu">
+                        <em class="fa fa-cube"></em>
+                        <span class="item-text">Settings</span>
+                     </a>
+                  </li>
+               @endif
+               @if ($currentUser->can('SECURITY.GROUPS.MANAGE') || $currentUser->can('SECURITY.USERS.MANAGE') || $currentUser->can('SECURITY.PERMISSIONS.MANAGE'))
+                  <li>
+                     <a href="#" title="Security" data-toggle="collapse-next" class="has-submenu">
+                        <em class="fa fa-flask"></em>
+                        <span class="item-text">Security</span>
+                     </a>
+                     <!-- START SubMenu item-->
+                     <ul class="nav collapse ">
+                        @if ($currentUser->can('SECURITY.GROUPS.MANAGE'))
+                           <li>
+                              <a href="/groups" title="Groups" data-toggle="" class="no-submenu">
+                                 <span class="item-text">Groups</span>
+                              </a>
+                           </li>
+                        @endif
+                        @if ($currentUser->can('SECURITY.USERS.MANAGE'))
+                           <li>
+                              <a href="/users" title="Users" data-toggle="" class="no-submenu">
+                                 <span class="item-text">Users</span>
+                              </a>
+                           </li>
+                        @endif
+                        @if ($currentUser->can('SECURITY.PERMISSIONS.MANAGE'))
+                           <li>
+                              <a href="/permissions" title="Permissions" data-toggle="" class="no-submenu">
+                                 <span class="item-text">Permissions</span>
+                              </a>
+                           </li>
+                        @endif
+                     </ul>
+                     <!-- END SubMenu item-->
+                  </li>
+               @endif
                <li>
-                  <a href="/settings" title="Settings" data-toggle="" class="no-submenu">
+                  <a href="/logout" title="Logout" data-toggle="" class="no-submenu">
                      <em class="fa fa-cube"></em>
-                     <span class="item-text">Settings</span>
-                  </a>
-               </li>
-               <li>
-                  <a href="/settings" title="Settings" data-toggle="" class="no-submenu">
-                     <em class="fa fa-cube"></em>
-                     <span class="item-text">Roles</span>
-                  </a>
-               </li>
-               <li>
-                  <a href="/settings" title="Settings" data-toggle="" class="no-submenu">
-                     <em class="fa fa-cube"></em>
-                     <span class="item-text">Permissions</span>
+                     <span class="item-text">Logout</span>
                   </a>
                </li>
                <!-- END Menu-->
