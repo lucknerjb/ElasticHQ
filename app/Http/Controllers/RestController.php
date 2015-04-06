@@ -145,7 +145,7 @@ class REstController extends BaseController {
       // ============ Indices Refresh
       else if ($section === 'indices' && $call === 'clear_cache') {
          $title = 'Indices Cache Cleared';
-         $url = "{$this->currentCluster['connection_url']}/_cache/_clear";
+         $url = "{$this->currentCluster['connection_url']}/_cache/clear";
          $response = $client->indices()->clearCache();
       }
 
