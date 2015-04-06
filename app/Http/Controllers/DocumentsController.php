@@ -59,6 +59,8 @@ class DocumentsController extends BaseController {
 
       $params['index'] = $filters['index'];
       $params['type'] = $filters['type'];
+      $params['from'] = 0;
+      $params['size'] = 100;
       $indice = $cluster->getIndice($params['index']);
 
       $client = ESClient::getClient($cluster->connection_url);

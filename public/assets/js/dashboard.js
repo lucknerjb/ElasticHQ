@@ -2596,4 +2596,28 @@ $(document).ready(function() {
          }
       });
    });
+
+   $(document).on('click', '.raw-api-calller', function(e) {
+      e.preventDefault();
+      var $elem = $(this);
+      var section = $elem.attr('data-section');
+      var call = $elem.attr('data-call');
+
+      $.ajax({
+         type: 'POST',
+         url: '/rest/raw_call',
+         data: {
+            section: section,
+            call: call,
+            _token: $('input[name="_token"]').val()
+         },
+         success: function(response) {
+            $('#response-container').html(response);
+         },
+         error: function(response) {
+            alert('There was an error processing your request');
+            console.log(response);
+         }
+      });
+   });
 });

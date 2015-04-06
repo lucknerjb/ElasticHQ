@@ -69,9 +69,10 @@ $router->group(['middleware' => 'auth'], function() use ($router) {
    // // Mappings
    // $router->get('/mappings', ['uses' => 'MappingsController@index']);
 
-   // // REST
-   // $router->get('/rest/custom-query', ['uses' => 'RestController@custom_query']);
-   // $router->get('/rest/insights', ['uses' => 'RestController@insights']);
+   // REST
+   $router->get('/rest/custom-query', ['uses' => 'RestController@custom_query']);
+   $router->get('/rest/raw-api', ['uses' => 'RestController@raw_api']);
+   $router->post('/rest/raw_call', ['uses' => 'RestController@raw_call']);
 
    // // Stats
    // $router->get('/stats', ['uses' => 'StatsController@index']);
